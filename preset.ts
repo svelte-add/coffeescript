@@ -1,11 +1,19 @@
 import { Preset, color } from "apply";
 
-const newPreprocessor = `sveltePreprocess({
-			defaults: {
-				style: "postcss",
-			},
-			postcss: true
-		})`
+const preProcessorOptions = { coffeescript: { bare: true } }
+
+const makePreprocessor = (oldOptions, indent) => {
+	if (oldOptions.match(/^\s*$/)) oldOptions = '{}';
+
+	// Ugly hack because JSON.parse may fail: old options property names may not be quoted.
+	oldOptions = eval(`(${oldOptions})`);
+
+	let options = JSON.stringify(Object.assign(preProcessorOptions, oldOptions), null, '\t');
+	options = options.replace(/\n/g, `\n\t${indent}`);
+	return `sveltePreprocess(${options})`;
+}
+
+let newPreprocessor = makePreprocessor('', '\t');
 
 const addPreprocessor = (otherPreprocessors) => {
 	if (otherPreprocessors) {
@@ -47,11 +55,8 @@ Preset.edit("package.json").update((content, preset) => {
 Preset.group((preset) => {
 	preset.editJson("package.json").merge({
 		devDependencies: {
-			"autoprefixer": "^10.2.5",
-			"cssnano": "^4.1.10",
-			"postcss": "^8.2.9",
-			"postcss-load-config": "^3.0.1",
-			"svelte-preprocess": "^4.7.0",
+			"coffeescript": "^2.5.1",
+			"svelte-preprocess": "next",
 		},
 	});
 }).withTitle("Adding needed dependencies");
@@ -62,8 +67,13 @@ Preset.group((preset) => {
 	preset.edit("svelte.config.cjs").update((content) => {
 		let result = content;
 
-		const matchEmptySveltePreprocess = /sveltePreprocess\(\)/m;
-		result = result.replace(matchEmptySveltePreprocess, (_match) => `[${newPreprocessor}]`);
+		// TODO: Parse out options better.
+		// This regex assumes there are no ')' char inside the options.
+		const matchSveltePreprocess = /^(\s*)(.*)sveltePreprocess\(([^)]*)\)/m;
+		if (matches = result.match(matchSveltePreprocess)) {
+			newPreprocessor = makePreprocessor(matches[3], matches[1]);
+			result = result.replace(matchSveltePreprocess, (_match, indent, preprocess, _oldOptions) => `${indent}${preprocess}[${newPreprocessor}]`);
+		}
 
 		const matchPreprocessors = /preprocess:[\s\r\n]\[[\s\r\n]*((?:.|\r|\n)+)[\s\r\n]*\]/m;
 		result = result.replace(matchPreprocessors, (_match, otherPreprocessors) => {
@@ -79,11 +89,6 @@ Preset.group((preset) => {
 }).withTitle("Setting up Svelte preprocessor");
 
 Preset.group((preset) => {
-	preset.edit(["src/routes/index.svelte", "src/App.svelte", "src/lib/Counter.svelte"]).update((match) => {
-		let result = match;
-		result = result.replace(`<style>`, `<style style lang="postcss">`);
-		return result;
-	});
-}).withTitle("Marking <style> blocks as explicitly PostCSS").ifNotOption(EXCLUDE_EXAMPLES);
+}).withTitle("Adding examples.").ifNotOption(EXCLUDE_EXAMPLES);
 
 Preset.instruct(`Run ${color.magenta("npm install")}, ${color.magenta("pnpm install")}, or ${color.magenta("yarn")} to install dependencies`);
