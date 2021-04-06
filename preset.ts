@@ -90,13 +90,15 @@ Preset.group((preset) => {
 
 
 Preset.group((preset) => {
-    preset.extract("example-files");
-    preset.edit('src/routes/index.svelte').update((content) => {
-        let result = content;
+	preset.extract("example-files");
+	preset.edit('src/routes/index.svelte').update((content) => {
+		let result = content;
 
-       result = result.replace(`<main>`, `<main>\n\t<a href="/coffeescript-example" class="button is-primary">CoffeeScript Example</a>`);
-       return result;
-    });
+		if (!result.includes('href="/coffeescript-example"')) {
+		   result = result.replace(`<main>`, `<main>\n\t<a href="/coffeescript-example" class="button is-primary">CoffeeScript Example</a>`);
+		}
+		return result;
+	});
 }).withTitle("Adding CoffeeScript example").ifNotOption(EXCLUDE_EXAMPLES);
 
 Preset.instruct(`Run ${color.magenta("npm install")}, ${color.magenta("pnpm install")}, or ${color.magenta("yarn")} to install dependencies`);
