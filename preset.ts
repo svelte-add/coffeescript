@@ -88,7 +88,15 @@ Preset.group((preset) => {
 	}).withTitle("Configuring it in svelte.config.cjs")
 }).withTitle("Setting up Svelte preprocessor");
 
+
 Preset.group((preset) => {
-}).withTitle("Adding examples.").ifNotOption(EXCLUDE_EXAMPLES);
+    preset.extract("example-files");
+    preset.edit('src/routes/index.svelte').update((content) => {
+        let result = content;
+
+       result = result.replace(`<main>`, `<main>\n\t<a href="/coffeescript-example" class="button is-primary">CoffeeScript Example</a>`);
+       return result;
+    });
+}).withTitle("Adding CoffeeScript example").ifNotOption(EXCLUDE_EXAMPLES);
 
 Preset.instruct(`Run ${color.magenta("npm install")}, ${color.magenta("pnpm install")}, or ${color.magenta("yarn")} to install dependencies`);
