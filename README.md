@@ -11,7 +11,7 @@ npm init svelte@next
 
 Once that is set up, run this command in your project directory to set up PostCSS:
 ```sh
-npx svelte-add coffeescript
+npx svelte-add Leftium/coffeescript-adder
 ```
 
 ## ⚡️ Adding to Vite
@@ -22,7 +22,7 @@ npm init @vitejs/app  # Choose svelte or svelte-ts
 
 Once that is set up, run this command in your project directory to set up coffeescript:
 ```sh
-npx svelte-add coffeescript
+npx svelte-add Leftium/coffeescript-adder
 ```
 
 ## 🛠 Usage
@@ -31,13 +31,13 @@ After the adder runs,
 
 * You can import coffeescript modules in Svelte files.
 
-* You can apply *another* [Svelte Adder](https://github.com/svelte-add/svelte-adders) to your project for more functionality. Specifically, check out [svelte-add/tailwindcss](https://github.com/svelte-add/tailwindcss).
+* You can apply *another* [Svelte Adder](https://github.com/svelte-add/svelte-adders) to your project for more functionality.
 
 ## 😵 Help! I have a question
-[Create an issue](https://github.com/svelte-add/coffeescript/issues/new) and I'll try to help.
+[Create an issue](https://github.com/Leftium/coffeescript-adder/new) and I'll try to help.
 
 ## 😡 Fix! There is something that needs improvement
-[Create an issue](https://github.com/svelte-add/coffeescript/issues/new) or [pull request](https://github.com/svelte-add/coffeescript/pulls) and I'll try to fix.
+[Create an issue](https://github.com/Leftium/coffeescript-adder/issues/new) or [pull request](https://github.com/Leftium/coffeescript-adder/pulls) and I'll try to fix.
 
 These are new tools, so there are likely to be problems in this project. Thank you for bringing them to my attention or fixing them for me.
 

@@ -13,10 +13,10 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/svelte-add/coffeescript.git"
+        "url": "https://github.com/Leftium/coffeescript-adder.git"
     },
-    "bugs": "https://github.com/svelte-add/coffeescript/issues",
-    "homepage": "https://github.com/svelte-add/coffeescript",
+    "bugs": "https://github.com/Leftium/coffeescript-adder/issues",
+    "homepage": "https://github.com/Leftium/coffeescript-adder",
     "preset": "preset.ts",
     "devDependencies": {
         "apply": "^0.2.13"
