@@ -95,7 +95,7 @@ Preset.group((preset) => {
 		let result = content;
 
 		if (!result.includes('href="/coffeescript-example"')) {
-		   result = result.replace(`<main>`, `<main>\n\t<a href="/coffeescript-example" class="button is-primary">CoffeeScript Example</a>`);
+		   result = result.replace(`<main>`, `<main>\n\t<br><a href="/coffeescript-example" class="button is-primary">CoffeeScript Example</a>`);
 		}
 		return result;
 	});

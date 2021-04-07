@@ -25,15 +25,15 @@
 </script>
 
 <main>
-	<h1>CoffeeScript + Svelte Reactivity</h1>
+	<h1>CoffeeScript+Svelte: Reactivity</h1>
 
 	<button on:click={handleClick}>
 		Clicked {count} {count === 1 ? 'time' : 'times'}
 	</button>
 
-	<p>Compare to the original JavaScript version at: <br />
+	<p>Compare to the 
 	<a href="https://svelte.dev/tutorial/reactive-statements">
-	svelte.dev/tutorial/reactive-statements</a></p>
+	original example in JavaScript</a></p>
 </main>
 
 <style>
