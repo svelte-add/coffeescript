@@ -1,51 +1,27 @@
-<h1 align="center">☕ Add CoffeeScript to Svelte</h1>
+<h1 align="center">☕️ Add CoffeeScript to Svelte</h1>
 
-## ❓ What is this?
-This is an **experimental** command to run to add CoffeeScript to your SvelteKit project or Vite-powered Svelte app.
+This is an adder for `svelte-add`; you should [read its `README`](https://github.com/svelte-add/svelte-add#readme) before continuing here.
 
-## 🧰 Adding to SvelteKit
-You must start with a fresh copy of the official SvelteKit template, which is currently created by running this command:
+## ➕ Adding CoffeeScript
+
+This adder's codename is `coffeescript`, and can be used like so:
+
 ```sh
-npm init svelte@next
+npx svelte-add@latest coffeescript
 ```
 
-Once that is set up, run this command in your project directory to set up CoffeeScript:
-```sh
-npx svelte-add Leftium/coffeescript-adder
-```
+### 🏞 Supported environments
 
-## ⚡️ Adding to Vite
-You must start with a fresh copy of the official Vite-powered Svelte app template, which is currently created by running this command:
-```sh
-npm init @vitejs/app  # Choose svelte or svelte-ts
-```
+This adder supports SvelteKit and Vite-powered Svelte apps (all the environments `svelte-add` currently supports).
 
-Once that is set up, run this command in your project directory to set up coffeescript:
-```sh
-npx svelte-add Leftium/coffeescript-adder
-```
+### ⚙️ Options
 
-## 🛠 Usage
+This adder doesn't take any options of its own.
+
+## 🛠 Using CoffeeScript
+
 After the adder runs,
-* You can write coffeescript syntax in the `script` blocks in Svelte files.
 
-* You can import coffeescript modules in Svelte files.
+- You can write CoffeeScript syntax in the `script lang="coffee"` blocks in Svelte files.
 
-* You can apply *another* [Svelte Adder](https://github.com/svelte-add/svelte-adders) to your project for more functionality. **Note:** some adders (specifically postcss and bulma) overwrite sveltePrepocess() options. Ensure the required options are set by either running coffeescript-adder last, or running it again after adding postcss/bulma (coffeescript-adder preserves the options).
-
-## 😵 Help! I have a question
-[Create an issue](https://github.com/Leftium/coffeescript-adder/new) and I'll try to help.
-
-## 😡 Fix! There is something that needs improvement
-[Create an issue](https://github.com/Leftium/coffeescript-adder/issues/new) or [pull request](https://github.com/Leftium/coffeescript-adder/pulls) and I'll try to fix.
-
-These are new tools, so there are likely to be problems in this project. Thank you for bringing them to my attention or fixing them for me.
-
-## 📄 License
-MIT
-
----
-
-*Repository preview image generated with [GitHub Social Preview](https://social-preview.pqt.dev/)*
-
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+- You can write CoffeeScript syntax in `.coffee` files and import them elsewhere.
