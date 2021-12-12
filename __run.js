@@ -23,7 +23,7 @@ export const run = async ({ folderInfo, install, updateJavaScript }) => {
 				},
 				object: coffeescriptOptions,
 				property: "bare",
-			})
+			});
 		},
 		updateJavaScript,
 	});
