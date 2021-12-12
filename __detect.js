@@ -12,6 +12,8 @@ export const heuristics = [
 			/** @param {string} text */
 			const sveltePreprocessIsProbablySetup = (text) => {
 				if (!text.includes("svelte-preprocess")) return false;
+				if (!text.includes("coffeescript")) return false;
+				if (!text.includes("bare")) return false;
 				return true;
 			};
 

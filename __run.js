@@ -5,9 +5,25 @@ import { addImport, setDefault } from "../../ast-tools.js";
 export const run = async ({ folderInfo, install, updateJavaScript }) => {
 	await updateSveltePreprocessArgs({
 		folderInfo,
-		mutateSveltePreprocessArgs() {
-			// CoffeeScript doesn't have any options in svelte-preprocess.
-			// Just make sure svelte-preprocess is set up.
+		mutateSveltePreprocessArgs(sveltePreprocessArgs) {
+			const coffeescriptOptions = setDefault({
+				default: {
+					type: "ObjectExpression",
+					properties: [],
+				},
+				object: sveltePreprocessArgs,
+				property: "coffeescript",
+			});
+			if (coffeescriptOptions.type !== "ObjectExpression") throw new Error("CoffeeScript config in svelte-preprocess options must be an object");
+
+			setDefault({
+				default: {
+					type: "Literal",
+					value: true,
+				},
+				object: coffeescriptOptions,
+				property: "bare",
+			})
 		},
 		updateJavaScript,
 	});
