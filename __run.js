@@ -1,7 +1,7 @@
 import { updateSveltePreprocessArgs, updateViteConfig } from "../../adder-tools.js";
 import { addImport, setDefault } from "../../ast-tools.js";
 
-/** @type {import("../..").AdderRun<import("./__metadata.js").Options>} */
+/** @type {import("../..").AdderRun<import("./__info.js").Options>} */
 export const run = async ({ folderInfo, install, updateJavaScript }) => {
 	await updateSveltePreprocessArgs({
 		folderInfo,
