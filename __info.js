@@ -2,6 +2,11 @@ export const name = "CoffeeScript";
 
 /** @typedef {{}} Options */
 
+/** @type {import("../..").Gatekeep} */
+export const gatekeep = async () => {
+	return { able: true };
+};
+
 /** @type {import("../..").AdderOptions<Options>} */
 export const options = {};
 
