@@ -1,5 +1,9 @@
 export const name = "CoffeeScript";
 
+export const emoji = "☕️";
+
+export const usageMarkdown = ['You can write CoffeeScript syntax in the `script lang="coffee"` blocks in Svelte files.', "You can write CoffeeScript syntax in `.coffee` files and import them elsewhere."];
+
 /** @typedef {{}} Options */
 
 /** @type {import("../..").Gatekeep} */
