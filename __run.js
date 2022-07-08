@@ -29,7 +29,6 @@ export const run = async ({ folderInfo, install, updateJavaScript }) => {
 	});
 
 	await updateViteConfig({
-		folderInfo,
 		mutateViteConfig(viteConfig, containingFile, cjs) {
 			let vitePluginCoffeeImportedAs = "coffee";
 			addImport({ require: vitePluginCoffeeImportedAs, cjs, default: vitePluginCoffeeImportedAs, package: "vite-plugin-coffee", typeScriptEstree: containingFile });
