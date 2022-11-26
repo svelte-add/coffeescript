@@ -53,12 +53,8 @@ export const heuristics = [
 				return true;
 			};
 
-			const js = await readFile({ path: "/svelte.config.js" });
-			const cjs = await readFile({ path: "/svelte.config.cjs" });
 			const vite = await readFile({ path: "/vite.config.js" });
 
-			if (vitePluginIsProbablySetup(js.text)) return true;
-			if (vitePluginIsProbablySetup(cjs.text)) return true;
 			if (vitePluginIsProbablySetup(vite.text)) return true;
 
 			return false;
