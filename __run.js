@@ -93,6 +93,7 @@ export const run = async ({ folderInfo, install, updateJavaScript }) => {
 			});
 		},
 		updateJavaScript,
+		folderInfo,
 	});
 
 	await install({ package: "svelte-preprocess" });
