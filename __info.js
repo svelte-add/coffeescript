@@ -1,3 +1,5 @@
+import { getViteConfigFilePath } from "../../adder-tools.js";
+
 export const name = "CoffeeScript";
 
 export const emoji = "☕️";
@@ -44,7 +46,7 @@ export const heuristics = [
 	},
 	{
 		description: "The Vite CoffeeScript plugin is set up",
-		async detector({ readFile }) {
+		async detector({ readFile, folderInfo }) {
 			/** @param {string} text */
 			const vitePluginIsProbablySetup = (text) => {
 				if (!text.includes("vite-plugin-coffee")) return false;
@@ -53,7 +55,7 @@ export const heuristics = [
 				return true;
 			};
 
-			const vite = await readFile({ path: "/vite.config.js" });
+			const vite = await readFile({ path: `/${getViteConfigFilePath(folderInfo)}` });
 
 			if (vitePluginIsProbablySetup(vite.text)) return true;
 
