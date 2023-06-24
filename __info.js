@@ -25,13 +25,12 @@ export const heuristics = [
 		},
 	},
 	{
-		description: "`svelte-preprocess` is set up for CoffeeScript in `svelte.config.js`",
+		description: "`vitePreprocess` is set up for CoffeeScript in `svelte.config.js`",
 		async detector({ readFile }) {
 			/** @param {string} text */
 			const sveltePreprocessIsProbablySetup = (text) => {
-				if (!text.includes("svelte-preprocess")) return false;
-				if (!text.includes("coffeescript")) return false;
-				if (!text.includes("bare")) return false;
+				if (!text.includes("vitePreprocess")) return false;
+
 				return true;
 			};
 
