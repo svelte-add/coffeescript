@@ -77,7 +77,8 @@ export const run = async ({ folderInfo, install, updateJavaScript }) => {
 		folderInfo,
 	});
 
-	await install({ package: "@sveltejs/vite-plugin-svelte" });
+	if (!folderInfo.kit) await install({ package: "@sveltejs/vite-plugin-svelte" });
+
 	await install({ package: "coffeescript" });
 	await install({ package: "vite-plugin-coffee" });
 };
